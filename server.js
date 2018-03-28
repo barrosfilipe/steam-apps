@@ -10,13 +10,15 @@ app.use('/', express.static(__dirname + '/app'))
 
 /* API GET Route to Games JSON */
 app.get('/api/apps', async (req, res) => {
-  const data = await global.db.collection('games').find().toArray()
+  const data = await global.db.collection('games')
+  .find().toArray()
   res.json({games: data})
 })
 
-/* API GET Route to Games JSON */
+/* API GET Route to Games JSON by Id */
 app.get('/api/apps/:id', async (req, res) => {
-  const data = await global.db.collection('games').find({steam_appid: parseInt(req.params.id)}).toArray()
+  const data = await global.db.collection('games')
+  .find({steam_appid: parseInt(req.params.id)}).toArray()
   res.json({game: data})
 })
 
