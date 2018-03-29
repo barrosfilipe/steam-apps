@@ -1,7 +1,7 @@
 {
   "name": "SteamApps",
   "version": "1.0.0",
-  "description": "",
+  "description": "Steam Apps Store API",
   "main": "./src/app.js",
   "scripts": {
     "test": "jest -i --forceExit",
@@ -18,7 +18,9 @@
     "express": "^4.16.3",
     "http-errors": "^1.6.2",
     "jest": "^22.4.3",
+    "jquery": "^3.3.1",
     "mongodb": "^3.0.5",
     "supertest": "^3.0.0"
-  }
+  },
+  "devDependencies": {}
 }

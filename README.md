@@ -4,8 +4,13 @@
 It's just a Steam Store API Example using Node, Express and MongoDB
 
 ## How to run
-`git clone https://github.com/barrosfilipe/steam-apps.git`
-`npm install && npm start`
+`$ git clone https://github.com/barrosfilipe/steam-apps.git`
+
+`$ yarn`
+
+`$ yarn test`
+
+`$ yarn start`
 
 ## Technical Details
 * API is using [Node.js](https://nodejs.org/en/) with the [Express](http://expressjs.com/) framework

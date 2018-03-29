@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Steam Apps</title>
+  <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/solid.css" integrity="sha384-29Ax2Ao1SMo9Pz5CxU1KMYy+aRLHmOu6hJKgWiViCYpz3f9egAJNwjnKGgr+BXDN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/brands.css" integrity="sha384-ATC/oZittI09GYIoscTZKDdBr/kI3lCwzw3oBMnOYCPVNJ4i7elNlCxSgLfdfFbl" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/fontawesome.css" integrity="sha384-Lyz+8VfV0lv38W729WFAmn77iH5OSroyONnUva4+gYaQTic3iI2fnUKtDSpbVf0J" crossorigin="anonymous">
+  <!-- App -->
+  <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+  <div class="container-fluid header">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+         <img src="assets/img/logo.png" alt="">
+       </div>
+     </div>
+   </div>
+ </div>
+ <div id="app" class="container mt-2">
+   <div class="row" v-for="game in games">
+     <div class="col">
+      <h4 class="mt-5">{{game.name}}</h4>
+      <div class="movie mt-5">
+        <div class="row">
+          <div class="col-md-8">
+            <div :id="`carouselExampleControls_${game.steam_appid}`" class="carousel slide" data-ride="carousel" data-interval="false">
+              <ol class="carousel-indicators">
+                <li :data-target="`#carouselExampleIndicators_${game.steam_appid}`" data-slide-to="0" class="active"></li>
+                <li :data-target="`#carouselExampleIndicators_${game.steam_appid}`" data-slide-to="1"></li>
+                <li :data-target="`#carouselExampleIndicators_${game.steam_appid}`" data-slide-to="2"></li>
+                <li :data-target="`#carouselExampleIndicators_${game.steam_appid}`" data-slide-to="3"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <video width="100%" controls autoplay muted>
+                    <source :src="game.movie" type="video/webm" />
+                    Seu navegador não suporta o elemento <code>video</code>.
+                  </video>
+                </div>
+                <div class="carousel-item fix-slide" v-for="screenshot in game.screenshots">
+                  <img class="d-block w-100" :src="screenshot.path" alt="Second slide">
+                </div>
+              </div>
+              <a class="carousel-control-prev" :href="`#carouselExampleControls_${game.steam_appid}`" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" :href="`#carouselExampleControls_${game.steam_appid}`" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <img width="100%" :src="game.header" alt="">
+            <div class="container mt-3">
+              <p class="title">{{game.about}}</p>
+              <p>
+                <span v-for="tag in game.tags">
+                  <span class="badge badge-primary badge-padding">{{tag.description}}</span>&nbsp;&nbsp;
+                </span>
+              </p>
+              <p>
+                <h4>
+                  <i class="fab fa-windows" v-if="game.platforms.windows == true"></i>&nbsp;&nbsp;
+                  <i class="fab fa-apple" v-if="game.platforms.mac == true"></i>&nbsp;&nbsp;
+                  <i class="fab fa-linux" v-if="game.platforms.linux == true"></i>
+                </h4>
+              </p>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Axios -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!-- Vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<!-- App -->
+<script src="app/app.js"></script>
+<!-- Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -43,6 +43,7 @@ MongoClient.connect(url, (err, client) => {
 
   const port = process.env.PORT || 3000
   app.listen(port, '0.0.0.0', () => {
+    console.log(`localhost:${port}`)
     app.emit('ready')
   })
 })
