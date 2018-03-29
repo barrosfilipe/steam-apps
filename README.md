@@ -1,3 +1,5 @@
+![Imgur](https://i.imgur.com/fvnSdzo.png)
+
 # Steam Apps API
 It's just a Steam Store API Example using Node, Express and MongoDB
 
