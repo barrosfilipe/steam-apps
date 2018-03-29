@@ -27,8 +27,8 @@
  <div id="app" class="container mt-2">
    <div class="row" v-for="game in games">
      <div class="col">
-      <h4 class="mt-5">{{game.name}}</h4>
-      <div class="movie mt-5">
+      <div class="movie mt-5" style="padding: 0px 30px;">
+        <h4 class="mt-5">{{game.name}}</h4>
         <div class="row">
           <div class="col-md-8">
             <div :id="`carouselExampleControls_${game.steam_appid}`" class="carousel slide" data-ride="carousel" data-interval="false">
@@ -81,6 +81,7 @@
       </div>
     </div>
   </div>
+  <p style="text-align: center; padding: 50px;">Direitos reservados da Steam são para Valve Corporation - valvesoftware.com</p>
 </div>
 <!-- Axios -->
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
