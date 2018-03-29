@@ -21,3 +21,8 @@ test('It should return a game', async () => {
   expect(response.statusCode).toBe(200)
   expect(response.body.game.length).toBe(1)
 })
+
+test('It should return status 404', async () => {
+  const response = await request(app).get(`/api/404`)
+  expect(response.statusCode).toBe(404)
+})
