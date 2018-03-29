@@ -1,5 +1,7 @@
 /* Express Framework */
-const express = require('express'), app = express()
+const express = require('express'),
+createError = require('http-errors'),
+app = express()
 
 /* MongoDB Atlas Read Only */
 const MongoClient = require('mongodb')
@@ -22,6 +24,17 @@ app.get('/api/apps/:id', async (req, res) => {
   res.json({game: data})
 })
 
+/* Catch 404 and forward to error handler */
+app.use((req, res, next) => {
+  next(createError(404))
+})
+
+/* Error handler */
+app.use((err, req, res, next) => {
+  res.status(err.status || 500)
+  res.json({error: 'No results found'})
+})
+
 /* Start Server on port 3000 if MongoClient is connected */
 MongoClient.connect(url, (err, client) => {
   if (err)
@@ -29,8 +42,8 @@ MongoClient.connect(url, (err, client) => {
   global.db = client.db('steamapps')
 
   const port = process.env.PORT || 3000
-  app.listen(port, () => {
-    console.log('ready on port', port)
+  app.listen(port, '0.0.0.0', () => {
+    app.emit('ready')
   })
 })
 
