@@ -6,7 +6,7 @@ const MongoClient = require('mongodb')
 const url = 'mongodb+srv://public:steam@cluster0-oaw75.mongodb.net/steamapps'
 
 /* App Files Location */
-app.use('/', express.static(__dirname + '/app'))
+app.use('/', express.static(__dirname + '/public'))
 
 /* API GET Route to Games JSON */
 app.get('/api/apps', async (req, res) => {
